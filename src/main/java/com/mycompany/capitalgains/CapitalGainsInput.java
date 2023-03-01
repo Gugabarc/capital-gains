@@ -20,11 +20,10 @@ public class CapitalGainsInput {
     }
 
     public void execute() {
-        Operations operations = new Operations();
-        CustomerStockOperations customer = CustomerStockOperations.of(operations);
-
         String line;
         while ((line = inputReader.readLine()) != null && !line.isEmpty()) {
+            Operations operations = new Operations();
+            CustomerStockOperations customer = CustomerStockOperations.of(operations);
             Operation[] inputOperations = jsonConverter.fromJson(line, Operation[].class);
             List.of(inputOperations).stream()
                     .forEach(operation -> operations.add(operation));
